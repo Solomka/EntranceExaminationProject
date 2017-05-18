@@ -5,16 +5,16 @@ import java.util.Observable;
 import java.util.Observer;
 
 import ua.training.entrance_examination.constants.GlobalConstants;
-import ua.training.entrance_examination.model.factory.DocumentsStorage;
+import ua.training.entrance_examination.model.factory.document.Documents;
 
 // in new thread
 public class QueueFillingObserver implements Observer {
 
-	private ObservableBlockingQueue observableQueue;
+	private ObservableDocumentsBlockingQueue observableQueue;
 
-	private DocumentsStorage documentsStorage;
+	private Documents documentsStorage;
 
-	public QueueFillingObserver(ObservableBlockingQueue observableQueue, DocumentsStorage documentsStorage) {
+	public QueueFillingObserver(ObservableDocumentsBlockingQueue observableQueue, Documents documentsStorage) {
 		this.observableQueue = Objects.requireNonNull(observableQueue);
 		this.documentsStorage = Objects.requireNonNull(documentsStorage);
 	}

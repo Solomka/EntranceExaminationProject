@@ -1,13 +1,13 @@
 package ua.training.entrance_examination.model.university;
 
-import ua.training.entrance_examination.model.document.Document;
-import ua.training.entrance_examination.model.document.StudentSpeciality;
+import ua.training.entrance_examination.service.ObservableDocumentsBlockingQueue;
 
-public class PolytechnicalUniversity extends University{
+public class PolytechnicalUniversity extends University {
 
 	@Override
-	protected boolean checkStudentSpeciliaty(Document document) {
-		return document.getStudentSpecialty() == StudentSpeciality.MATHEMATICIAN ? true : false;
+	public void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

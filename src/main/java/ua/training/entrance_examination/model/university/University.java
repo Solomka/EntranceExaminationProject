@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import ua.training.entrance_examination.model.document.Document;
+import ua.training.entrance_examination.service.ObservableDocumentsBlockingQueue;
 
 public abstract class University {
 
@@ -13,12 +14,10 @@ public abstract class University {
 		studentsDocuments = new HashSet<>();
 	}
 
-	public void acceptStudentDocument(Document document) {
-		if (checkStudentSpeciliaty(document)) {
-			studentsDocuments.add(document);
-		}
+	public abstract void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue);
+
+	public Set<Document> getStudentsDocuments() {
+		return studentsDocuments;
 	}
-
-	protected abstract boolean checkStudentSpeciliaty(Document document);
-
+	
 }

@@ -10,4 +10,11 @@ public abstract class Document {
 	public StudentSpeciality getStudentSpecialty() {
 		return studentSpecialty;
 	}
+
+	@Override
+	public String toString() {
+		return "Document [studentSpecialty=" + studentSpecialty + "]";
+	}
+	
+	
 }

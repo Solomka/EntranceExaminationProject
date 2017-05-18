@@ -1,4 +1,4 @@
-package ua.training.entrance_examination.model.factory;
+package ua.training.entrance_examination.model.factory.document;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -7,12 +7,12 @@ import ua.training.entrance_examination.constants.GlobalConstants;
 import ua.training.entrance_examination.model.document.Document;
 import ua.training.entrance_examination.model.document.StudentSpeciality;
 
-public class DocumentsStorage {
+public class Documents {
 
 	private DocumentFactory documentFactory;
 	private LinkedList<Document> documents;
 
-	public DocumentsStorage() {
+	public Documents() {
 		this.documentFactory = new DocumentFactoryImpl();
 		this.documents = new LinkedList<>();
 

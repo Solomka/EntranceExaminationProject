@@ -7,15 +7,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 import ua.training.entrance_examination.constants.GlobalConstants;
 import ua.training.entrance_examination.model.document.Document;
 
-public class ObservableBlockingQueue extends Observable {
+public class ObservableDocumentsBlockingQueue extends Observable {
 
 	private BlockingQueue<Document> documentsQueue;
 
-	public ObservableBlockingQueue() {
+	public ObservableDocumentsBlockingQueue() {
 		this(GlobalConstants.MAX_QUEUE_THRESHOLD);
 	}
 
-	public ObservableBlockingQueue(int capacity) {
+	public ObservableDocumentsBlockingQueue(int capacity) {
 		this.documentsQueue = new LinkedBlockingQueue<>(capacity);
 	}
 

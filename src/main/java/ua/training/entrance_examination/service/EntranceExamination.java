@@ -1,48 +1,44 @@
 package ua.training.entrance_examination.service;
 
-import java.util.List;
+import java.util.Objects;
 
-import ua.training.entrance_examination.model.factory.DocumentsStorage;
-import ua.training.entrance_examination.model.university.MedicalUniversity;
-import ua.training.entrance_examination.model.university.PolytechnicalUniversity;
-import ua.training.entrance_examination.model.university.UniversalUniversity;
-import ua.training.entrance_examination.model.university.University;
+import ua.training.entrance_examination.model.factory.document.Documents;
+import ua.training.entrance_examination.model.factory.university.Universities;
+import ua.training.entrance_examination.model.university.UniversityType;
 
 public class EntranceExamination {
 
-	private ObservableBlockingQueue blockingQueue;
+	private ObservableDocumentsBlockingQueue documentsQueue;
 	private QueueFillingObserver fillingObserver;
+
+	private Universities universities;
+
+	private EntranceExamination(Documents documentsStorage, Universities universities) {
+
+		this.documentsQueue = new ObservableDocumentsBlockingQueue();
+		this.fillingObserver = new QueueFillingObserver(documentsQueue, documentsStorage);
+		documentsQueue.addObserver(fillingObserver);
+		this.universities = Objects.requireNonNull(universities);
+	}
+
+	public static Universities acceptDocumentsToUniversities(Documents documentsStorage, Universities universities) {
+		return new EntranceExamination(documentsStorage, universities).handleDocumentsQueue();		
+	}
+
+	private Universities handleDocumentsQueue() {
+		new Thread(() -> {
+			while (!documentsQueue.isEmpty()) {
+				universities.getUniversityByType(UniversityType.MEDICAL).acceptStudentDocument(documentsQueue);
+				universities.getUniversityByType(UniversityType.UNIVERSAL).acceptStudentDocument(documentsQueue);
+				universities.getUniversityByType(UniversityType.POLUTECHNICAL).acceptStudentDocument(documentsQueue);
+			}
+		}).start();
+		
+		return getUniversities();
+	}
 	
-	private List<University> universities;
-
-	private EntranceExamination(DocumentsStorage documentsStorage) {		
-
-		this.blockingQueue = new ObservableBlockingQueue();
-		this.fillingObserver = new QueueFillingObserver(blockingQueue, documentsStorage);
-		blockingQueue.addObserver(fillingObserver);
-		
-		setUniversities();
-
-	}
-	/*
-	 * create 3 threads
-	 * TODO: rewrite with factory
-	 */
-	private void setUniversities(){
-		universities.add(new MedicalUniversity());
-		universities.add(new PolytechnicalUniversity());
-		universities.add(new UniversalUniversity());
-	}
-
-	public static void handleDocumentsQueue(DocumentsStorage documentsStorage) {
-		new EntranceExamination(documentsStorage).handleDocumentsQueue();
-	}
-
-	private void handleDocumentsQueue() {
-		while(!blockingQueue.isEmpty()){
-			
-		}
-		
+	private Universities getUniversities(){
+		return universities;
 	}
 
 }

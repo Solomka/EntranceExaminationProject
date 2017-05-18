@@ -1,4 +1,4 @@
-package ua.training.entrance_examination.model.factory;
+package ua.training.entrance_examination.model.factory.document;
 
 import ua.training.entrance_examination.model.document.Document;
 import ua.training.entrance_examination.model.document.StudentSpeciality;
