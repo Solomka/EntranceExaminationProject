@@ -14,7 +14,7 @@ public abstract class University {
 		studentsDocuments = new HashSet<>();
 	}
 
-	public abstract void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue);
+	public abstract void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue) throws InterruptedException;
 
 	public Set<Document> getStudentsDocuments() {
 		return studentsDocuments;

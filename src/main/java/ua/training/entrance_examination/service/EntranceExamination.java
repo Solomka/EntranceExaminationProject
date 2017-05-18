@@ -13,27 +13,46 @@ public class EntranceExamination {
 
 	private Universities universities;
 
-	private EntranceExamination(Documents documentsStorage, Universities universities) {
+	private EntranceExamination(Documents documentsStorage, Universities universities) throws InterruptedException {
 
 		this.documentsQueue = new ObservableDocumentsBlockingQueue();
 		this.fillingObserver = new QueueFillingObserver(documentsQueue, documentsStorage);
 		documentsQueue.addObserver(fillingObserver);
 		this.universities = Objects.requireNonNull(universities);
+		
+		System.out.println(documentsQueue.getDocument());
 	}
 
-	public static Universities acceptDocumentsToUniversities(Documents documentsStorage, Universities universities) {
+	public static Universities acceptDocumentsToUniversities(Documents documentsStorage, Universities universities) throws InterruptedException {
 		return new EntranceExamination(documentsStorage, universities).handleDocumentsQueue();		
 	}
 
 	private Universities handleDocumentsQueue() {
+		
 		new Thread(() -> {
 			while (!documentsQueue.isEmpty()) {
-				universities.getUniversityByType(UniversityType.MEDICAL).acceptStudentDocument(documentsQueue);
-				universities.getUniversityByType(UniversityType.UNIVERSAL).acceptStudentDocument(documentsQueue);
-				universities.getUniversityByType(UniversityType.POLUTECHNICAL).acceptStudentDocument(documentsQueue);
+				try {
+					universities.getUniversityByType(UniversityType.MEDICAL).acceptStudentDocument(documentsQueue);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					universities.getUniversityByType(UniversityType.UNIVERSAL).acceptStudentDocument(documentsQueue);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					universities.getUniversityByType(UniversityType.POLUTECHNICAL).acceptStudentDocument(documentsQueue);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}).start();
 		
+		System.out.println(universities.getUniversityByType(UniversityType.MEDICAL).getStudentsDocuments().toString());
 		return getUniversities();
 	}
 	

@@ -17,7 +17,7 @@ public class Controller {
 
 	}
 
-	public void startDocumentsAcceptanceProcess() {
+	public void startDocumentsAcceptanceProcess() throws InterruptedException {
 		Universities universities = EntranceExamination.acceptDocumentsToUniversities(new Documents(),
 				new Universities());
 
