@@ -11,11 +11,11 @@ public class UniversityFactoryImpl implements UniversityFactory {
 	@Override
 	public University createUniversity(UniversityType universityType) {
 		switch (universityType) {
-		case MEDICAL:
+		case MEDICAL_UNIVERSITY:
 			return new MedicalUniversity();
-		case UNIVERSAL:
+		case UNIVERSAL_UNIVERSITY:
 			return new UniversalUniversity();
-		case POLUTECHNICAL:
+		case POLITECHNICAL_UNIVERSITY:
 			return new PolytechnicalUniversity();
 		default:
 			throw new IllegalArgumentException("Such UniversityType doesn't exist");

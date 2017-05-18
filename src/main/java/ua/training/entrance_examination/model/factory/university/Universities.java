@@ -20,10 +20,10 @@ public class Universities {
 	}
 
 	private void addUniversities() {
-		universities.put(UniversityType.MEDICAL, universityFactory.createUniversity(UniversityType.MEDICAL));
-		universities.put(UniversityType.UNIVERSAL, universityFactory.createUniversity(UniversityType.UNIVERSAL));
-		universities.put(UniversityType.POLUTECHNICAL,
-				universityFactory.createUniversity(UniversityType.POLUTECHNICAL));
+		universities.put(UniversityType.MEDICAL_UNIVERSITY, universityFactory.createUniversity(UniversityType.MEDICAL_UNIVERSITY));
+		universities.put(UniversityType.UNIVERSAL_UNIVERSITY, universityFactory.createUniversity(UniversityType.UNIVERSAL_UNIVERSITY));
+		universities.put(UniversityType.POLITECHNICAL_UNIVERSITY,
+				universityFactory.createUniversity(UniversityType.POLITECHNICAL_UNIVERSITY));
 	}
 
 	public University getUniversityByType(UniversityType universityType) {
