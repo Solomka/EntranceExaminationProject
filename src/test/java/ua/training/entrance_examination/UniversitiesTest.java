@@ -15,7 +15,8 @@ public class UniversitiesTest {
 
 	@Test
 	public void testUniversitiesNumber() {
-		Universities universities = new Universities();
+		Universities universities = new Universities(UniversityType.MEDICAL_UNIVERSITY,
+				UniversityType.POLYTECHNICAL_UNIVERSITY, UniversityType.UNIVERSAL_UNIVERSITY);
 
 		int expectedUniversitiesNumber = 3;
 		int actualUniversitiesNumber = universities.size();
@@ -25,13 +26,14 @@ public class UniversitiesTest {
 
 	@Test
 	public void testUniversitiesTypes() {
-		Universities universities = new Universities();
+		Universities universities = new Universities(UniversityType.MEDICAL_UNIVERSITY,
+				UniversityType.POLYTECHNICAL_UNIVERSITY, UniversityType.UNIVERSAL_UNIVERSITY);
 
 		List<UniversityType> expectedUniversitiesTypes = new ArrayList<>(
 				Arrays.asList(UniversityType.POLYTECHNICAL_UNIVERSITY, UniversityType.MEDICAL_UNIVERSITY,
 						UniversityType.UNIVERSAL_UNIVERSITY));
 		List<UniversityType> actualUniversitiestypes = checkUniversitiesTypes(universities, expectedUniversitiesTypes);
-		
+
 		expectedUniversitiesTypes.removeAll(actualUniversitiestypes);
 
 		assertEquals(0, expectedUniversitiesTypes.size());

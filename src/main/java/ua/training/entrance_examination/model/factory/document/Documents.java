@@ -3,7 +3,6 @@ package ua.training.entrance_examination.model.factory.document;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import ua.training.entrance_examination.constants.GlobalConstants;
 import ua.training.entrance_examination.model.document.Document;
 import ua.training.entrance_examination.model.document.StudentSpeciality;
 
@@ -12,9 +11,15 @@ public class Documents {
 	private DocumentFactory documentFactory;
 	private LinkedList<Document> documents;
 
-	public Documents() {
+	private int numberOfBiologists;
+	private int numberOfMathematicians;
+
+	public Documents(int numberOfBiologists, int numberOfMathematicians) {
 		this.documentFactory = new DocumentFactoryImpl();
 		this.documents = new LinkedList<>();
+
+		this.numberOfBiologists = numberOfBiologists;
+		this.numberOfMathematicians = numberOfMathematicians;
 
 		acceptDocuments();
 	}
@@ -27,13 +32,13 @@ public class Documents {
 
 	private void generateBiologistsDocuments() {
 
-		for (int i = 0; i < GlobalConstants.BIOLOGISTS_NUMBER; i++) {
+		for (int i = 0; i < numberOfBiologists; i++) {
 			documents.add(documentFactory.createDocument(StudentSpeciality.BIOLOGIST));
 		}
 	}
 
 	private void generateMathematiciansDocuments() {
-		for (int i = 0; i < GlobalConstants.MATHEMATICIANS_NUMBER; i++) {
+		for (int i = 0; i < numberOfMathematicians; i++) {
 			documents.add(documentFactory.createDocument(StudentSpeciality.MATHEMATICIAN));
 		}
 	}
