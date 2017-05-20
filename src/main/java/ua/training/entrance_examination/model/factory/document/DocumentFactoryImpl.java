@@ -1,8 +1,6 @@
 package ua.training.entrance_examination.model.factory.document;
 
-import ua.training.entrance_examination.model.document.BiologistDocument;
 import ua.training.entrance_examination.model.document.Document;
-import ua.training.entrance_examination.model.document.MathematicianDocument;
 import ua.training.entrance_examination.model.document.StudentSpeciality;
 
 public class DocumentFactoryImpl implements DocumentFactory {
@@ -11,9 +9,9 @@ public class DocumentFactoryImpl implements DocumentFactory {
 	public Document createDocument(StudentSpeciality studentSpeciality) {
 		switch (studentSpeciality) {
 		case BIOLOGIST:
-			return new BiologistDocument();
+			return new Document(StudentSpeciality.BIOLOGIST);
 		case MATHEMATICIAN:
-			return new MathematicianDocument();
+			return new Document(StudentSpeciality.MATHEMATICIAN);
 		default:
 			throw new IllegalArgumentException("Such StudentSpeciality doesn't exist");
 		}

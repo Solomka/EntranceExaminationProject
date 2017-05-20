@@ -1,10 +1,12 @@
 package ua.training.entrance_examination.model.document;
 
-public abstract class Document {
+import java.util.Objects;
+
+public class Document {
 	private StudentSpeciality studentSpecialty;
 
 	public Document(StudentSpeciality studentSpecialty) {
-		this.studentSpecialty = studentSpecialty;
+		this.studentSpecialty = Objects.requireNonNull(studentSpecialty);
 	}
 
 	public StudentSpeciality getStudentSpecialty() {
@@ -15,6 +17,4 @@ public abstract class Document {
 	public String toString() {
 		return "Document [studentSpecialty=" + studentSpecialty + "]";
 	}
-	
-	
 }

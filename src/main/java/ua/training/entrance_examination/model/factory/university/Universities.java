@@ -36,7 +36,13 @@ public class Universities {
 	public Set<UniversityType> getUniversitiesTypes() {
 		return universities.keySet();
 	}
-
 	
+	public int size(){
+		return universities.size();
+	}
+	
+	public int getUniversityDocumentsNumber(UniversityType universityType){
+		return getUniversityByType(universityType).getNumberOfDocumnetsAccepted();
+	}
 
 }

@@ -1,13 +1,10 @@
 package ua.training.entrance_examination.view;
 
 public interface ViewMessage {
-	
-	 String GREETING = "Welcome to the Entrance Examination!";
-	 String DOCUMENTS = "University documents: ";
-	
-	
-	
-	
+
+	String GREETING = "Welcome to the Entrance Examination!";
+	String DOCUMENTS_PROCESSING = "Documents acceptance process has started.....";
+
 	/* Utility strings */
 	String LEFT_PARENTHESIS = "{ ";
 	String RIGHT_PARANTHESIS = " }";

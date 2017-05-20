@@ -46,4 +46,8 @@ public class Documents {
 		return documents.size() == 0;
 	}
 
+	public int size() {
+		return documents.size();
+	}
+
 }

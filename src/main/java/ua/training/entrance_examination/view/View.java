@@ -1,34 +1,13 @@
 package ua.training.entrance_examination.view;
 
 import java.util.Objects;
-import java.util.Set;
-
-import ua.training.entrance_examination.model.document.Document;
-import ua.training.entrance_examination.model.university.University;
 
 public class View {
 
-	public void printUniversity(String universityName, final University university) {
+	public void printUniversity(String universityName, int universityDocuments) {
 		Objects.requireNonNull(universityName);
-		Objects.requireNonNull(university);
-		
-		printUniversityName(universityName);
-		printUniversityStudentsDocuments(university.getStudentsDocuments());
-	}
 
-	private void printUniversityName(String universityName) {
-		printMessage(universityName);
-	}
-
-	private void printUniversityStudentsDocuments(Set<Document> documents){
-		StringBuilder stringBuilder = new StringBuilder();
-
-		for (Document document : documents) {
-			stringBuilder.append(document.toString()).append(ViewMessage.NEW_LINE);
-		}
-
-		printMessage(ViewMessage.DOCUMENTS, ViewMessage.NEW_LINE, stringBuilder.toString());
-		
+		printMessage(universityName, ViewMessage.EMPTY_STR, Integer.toString(universityDocuments));
 	}
 
 	/**
