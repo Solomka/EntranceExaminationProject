@@ -16,10 +16,10 @@ public class Controller {
 		this.view = Objects.requireNonNull(view);
 	}
 
-	public void startDocumentsAcceptanceProcess() throws InterruptedException {
+	public void processUniversitiesDocumentsAcceptance() throws InterruptedException {
 		view.printMessage(ViewMessage.GREETING);
-		view.printMessage(ViewMessage.DOCUMENTS_PROCESSING);
+		view.printMessage(ViewMessage.DOCUMENTS_PROCESSING, ViewMessage.NEW_LINE);
 
-		EntranceExaminationService.acceptDocumentsToUniversities(new Documents(), new Universities(), view);
+		EntranceExaminationService.startAcceptingDocumentsToUniversities(new Documents(), new Universities(), view);
 	}
 }

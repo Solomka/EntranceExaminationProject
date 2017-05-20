@@ -22,7 +22,7 @@ public class EntranceExaminationService {
 
 	private View view;
 
-	private EntranceExaminationService(Documents documents, Universities universities, View view) {
+	public EntranceExaminationService(Documents documents, Universities universities, View view) {
 		Objects.requireNonNull(documents);
 
 		this.documentsQueue = new LinkedBlockingQueue<>();
@@ -33,11 +33,11 @@ public class EntranceExaminationService {
 		this.documentsConsumers = new DocumentsConsumers(documentsQueue, this.universities);
 	}
 
-	public static void acceptDocumentsToUniversities(Documents documents, Universities universities, View view) {
-		new EntranceExaminationService(documents, universities, view).acceptDocumentsToUniversities();
+	public static void startAcceptingDocumentsToUniversities(Documents documents, Universities universities, View view) {
+		new EntranceExaminationService(documents, universities, view).startAcceptingDocumentsToUniversities();
 	}
 
-	private void acceptDocumentsToUniversities() {
+	private void startAcceptingDocumentsToUniversities() {
 		documentsProducer.start();
 		documentsConsumers.start();
 
@@ -54,14 +54,13 @@ public class EntranceExaminationService {
 			e.printStackTrace();
 		}
 
-		showUniversitiesAfterDocAcceptance(universities);
-
+		showUniversitiesAfterDocumentsAcceptance();
 	}
 
-	private void showUniversitiesAfterDocAcceptance(Universities universities) {
+	private void showUniversitiesAfterDocumentsAcceptance() {
 
 		for (UniversityType universityType : universities.getUniversitiesTypes()) {
-			view.printUniversity(universityType.toString(), universities.getUniversityDocumentsNumber(universityType));
+			view.printUniversity(universityType.toString(), universities.getUniversityAcceptedDocumentsNumber(universityType));
 		}
 	}
 

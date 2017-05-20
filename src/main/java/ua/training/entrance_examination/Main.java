@@ -8,6 +8,6 @@ public class Main {
 		
 		View view = new View();
 		Controller controller = new Controller(view);
-		controller.startDocumentsAcceptanceProcess();
+		controller.processUniversitiesDocumentsAcceptance();
 	}
 }

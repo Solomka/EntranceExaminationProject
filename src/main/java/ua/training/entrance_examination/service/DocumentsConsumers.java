@@ -26,7 +26,7 @@ public class DocumentsConsumers extends Thread {
 
 	private void waitForProducerQueueFilling() {
 		try {
-			sleep(GlobalConstants.THREADS_SLEEP_MILLISECONDS);
+			sleep(GlobalConstants.CONSUMER_THREAD_SLEEP_BEFORE_FILLING_MSEC);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -38,7 +38,7 @@ public class DocumentsConsumers extends Thread {
 
 			universities.getUniversityByType(UniversityType.MEDICAL_UNIVERSITY).acceptStudentDocument(documentsQueue);
 			try {
-				sleep(GlobalConstants.THREADS_SLEEP_MILLISECONDS);
+				sleep(GlobalConstants.CONSUMER_THREAD_SLEEP_BEFORE_UNIVERSAL_UNIVERSITY_MSEC);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -46,16 +46,16 @@ public class DocumentsConsumers extends Thread {
 
 			universities.getUniversityByType(UniversityType.UNIVERSAL_UNIVERSITY).acceptStudentDocument(documentsQueue);
 			try {
-				sleep(GlobalConstants.THREADS_SLEEP_MILLISECONDS);
+				sleep(GlobalConstants.CONSUMER_THREAD_SLEEP_BEFORE_POLYTECHNICAL_UNIVERSITY_MSEC);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			universities.getUniversityByType(UniversityType.POLITECHNICAL_UNIVERSITY)
+			universities.getUniversityByType(UniversityType.POLYTECHNICAL_UNIVERSITY)
 					.acceptStudentDocument(documentsQueue);
 			try {
-				sleep(GlobalConstants.THREADS_SLEEP_MILLISECONDS);
+				sleep(GlobalConstants.CONSUMER_THREAD_SLEEP_BEFORE_MEDICAL_UNIVERSITY_MSEC);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

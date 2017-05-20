@@ -23,7 +23,7 @@ public abstract class University {
 		return studentsDocuments;
 	}
 	
-	public int getNumberOfDocumnetsAccepted(){
+	public int getNumberOfAcceptedDocuments(){
 		return studentsDocuments.size();
 	}
 

@@ -7,7 +7,7 @@ public class View {
 	public void printUniversity(String universityName, int universityDocuments) {
 		Objects.requireNonNull(universityName);
 
-		printMessage(universityName, ViewMessage.EMPTY_STR, Integer.toString(universityDocuments));
+		printMessage(universityName, ViewMessage.COLON, Integer.toString(universityDocuments));
 	}
 
 	/**

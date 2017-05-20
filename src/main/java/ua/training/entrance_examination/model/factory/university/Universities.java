@@ -22,8 +22,8 @@ public class Universities {
 	private void addUniversities() {
 		universities.put(UniversityType.MEDICAL_UNIVERSITY, universityFactory.createUniversity(UniversityType.MEDICAL_UNIVERSITY));
 		universities.put(UniversityType.UNIVERSAL_UNIVERSITY, universityFactory.createUniversity(UniversityType.UNIVERSAL_UNIVERSITY));
-		universities.put(UniversityType.POLITECHNICAL_UNIVERSITY,
-				universityFactory.createUniversity(UniversityType.POLITECHNICAL_UNIVERSITY));
+		universities.put(UniversityType.POLYTECHNICAL_UNIVERSITY,
+				universityFactory.createUniversity(UniversityType.POLYTECHNICAL_UNIVERSITY));
 	}
 
 	public University getUniversityByType(UniversityType universityType) {
@@ -41,8 +41,8 @@ public class Universities {
 		return universities.size();
 	}
 	
-	public int getUniversityDocumentsNumber(UniversityType universityType){
-		return getUniversityByType(universityType).getNumberOfDocumnetsAccepted();
+	public int getUniversityAcceptedDocumentsNumber(UniversityType universityType){
+		return getUniversityByType(universityType).getNumberOfAcceptedDocuments();
 	}
 
 }

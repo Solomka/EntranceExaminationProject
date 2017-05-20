@@ -15,7 +15,7 @@ public class UniversityFactoryImpl implements UniversityFactory {
 			return new MedicalUniversity();
 		case UNIVERSAL_UNIVERSITY:
 			return new UniversalUniversity();
-		case POLITECHNICAL_UNIVERSITY:
+		case POLYTECHNICAL_UNIVERSITY:
 			return new PolytechnicalUniversity();
 		default:
 			throw new IllegalArgumentException("Such UniversityType doesn't exist");
