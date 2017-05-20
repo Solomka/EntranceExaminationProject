@@ -1,22 +1,29 @@
 package ua.training.entrance_examination.model.university;
 
+import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.BlockingQueue;
 
 import ua.training.entrance_examination.constants.GlobalConstants;
-import ua.training.entrance_examination.service.ObservableDocumentsBlockingQueue;
+import ua.training.entrance_examination.model.document.Document;
 
 public class UniversalUniversity extends University {
 
 	@Override
-	public void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue) throws InterruptedException {
+	public void acceptStudentDocument(BlockingQueue<Document> documentsQueue) {
+		Objects.requireNonNull(documentsQueue);
 
 		int documentsNumber = rand(GlobalConstants.MIN_UNIVERSAL_UNIVERSITY_DOCUMENTS_NUM,
 				GlobalConstants.MAX_UNIVERSAL_UNIVERSITY_DOCUMENTS_NUM);
 
-		int i = 0;
-
-		while (!documentsQueue.isEmpty() && i < documentsNumber) {
-			getStudentsDocuments().add(documentsQueue.getDocument());
+		int i = GlobalConstants.MIN_UNIVERSAL_UNIVERSITY_DOCUMENTS_NUM;
+		while (i < documentsNumber && !documentsQueue.isEmpty()) {
+			try {
+				getStudentsDocuments().add(documentsQueue.take());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			i++;
 		}
 	}

@@ -1,23 +1,30 @@
 package ua.training.entrance_examination.model.university;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.BlockingQueue;
 
 import ua.training.entrance_examination.model.document.Document;
-import ua.training.entrance_examination.service.ObservableDocumentsBlockingQueue;
 
 public abstract class University {
 
-	private Set<Document> studentsDocuments;
+	private List<Document> studentsDocuments;
 
 	public University() {
-		studentsDocuments = new HashSet<>();
+		studentsDocuments = new ArrayList<>();
 	}
 
-	public abstract void acceptStudentDocument(ObservableDocumentsBlockingQueue documentsQueue) throws InterruptedException;
+	public abstract void acceptStudentDocument(BlockingQueue<Document> documentsQueue);
 
-	public Set<Document> getStudentsDocuments() {
+	public List<Document> getStudentsDocuments() {
 		return studentsDocuments;
 	}
 	
+	public int getNumberOfDocumnetsAccepted(){
+		return studentsDocuments.size();
+	}
+
 }
