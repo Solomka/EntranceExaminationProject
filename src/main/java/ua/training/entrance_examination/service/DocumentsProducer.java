@@ -21,7 +21,7 @@ public class DocumentsProducer extends Thread {
 	public void run() {
 		while (!documents.isEmpty()) {
 			if (documentsQueue.size() < GlobalConstants.MIN_QUEUE_THRESHOLD) {
-				while (documentsQueue.size() < GlobalConstants.MAX_QUEUE_THRESHOLD && !documents.isEmpty()) {
+				while (!documents.isEmpty() && documentsQueue.size() < GlobalConstants.MAX_QUEUE_THRESHOLD) {
 					try {
 						documentsQueue.put(documents.getDocument());
 					} catch (InterruptedException e) {

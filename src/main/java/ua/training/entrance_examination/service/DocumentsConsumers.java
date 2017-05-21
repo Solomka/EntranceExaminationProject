@@ -35,7 +35,6 @@ public class DocumentsConsumers extends Thread {
 	private void processUniversitiesDocumentsAcceptance() {
 
 		while (!documentsQueue.isEmpty()) {
-
 			universities.getUniversityByType(UniversityType.MEDICAL_UNIVERSITY).acceptStudentDocument(documentsQueue);
 			try {
 				sleep(GlobalConstants.CONSUMER_THREAD_SLEEP_BEFORE_UNIVERSAL_UNIVERSITY_MSEC);
